@@ -1,0 +1,113 @@
+/* Fixed to the viewport so it stays centred on tall pages (phones). The page behind is locked while it shows. */
+.app[data-intro='on'] {
+  height: 100dvh;
+  overflow: hidden;
+}
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  cursor: pointer;
+  outline: none;
+  transition: background 0.7s 0.35s;
+}
+.intro.leaving {
+  background: transparent;
+  pointer-events: none;
+}
+.intro-inner {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+  padding: 24px;
+}
+.intro-eyebrow {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-2);
+  opacity: 0;
+  animation: fadeIn 0.5s 0.1s forwards;
+}
+.intro-name {
+  font-size: clamp(1.25rem, 5.2vw, 2.7rem);
+  line-height: 1.2;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+  white-space: nowrap;
+  text-shadow: 3px 3px 0 var(--shadow);
+  will-change: transform;
+}
+.intro-name span {
+  display: inline-block;
+  opacity: 0;
+  animation: letterIn 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+@keyframes letterIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+.intro-line {
+  width: min(440px, 72%);
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  animation: lineIn 0.8s 1s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+@keyframes lineIn {
+  to {
+    transform: scaleX(1);
+  }
+}
+.intro-sub {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+  opacity: 0;
+  animation: fadeIn 0.5s 1.4s forwards;
+}
+.intro-press {
+  font-family: var(--f-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
+  opacity: 0;
+  animation: fadeIn 0.4s 1.8s forwards;
+}
+.intro-press span {
+  display: inline-block;
+  animation: pulse 1.6s 2.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+.intro-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.4s 1.9s forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+.intro.leaving :is(.intro-eyebrow, .intro-line, .intro-sub, .intro-press, .intro-actions) {
+  animation: none;
+  opacity: 0;
+}

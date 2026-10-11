@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+html {
+  background: var(--ground);
+}
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 15px/1.65 var(--f-ui);
+  transition: background 0.35s, color 0.35s;
+}
+#root {
+  min-height: 100dvh;
+}
+h1,
+h2,
+.screen-title,
+.brand {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  text-shadow: 3px 3px 0 var(--shadow);
+  text-wrap: balance;
+  margin: 0;
+}
+h2 {
+  font-size: 0.95rem;
+  letter-spacing: 0.24em;
+  text-shadow: 2px 2px 0 var(--shadow);
+}
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+}
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.mono {
+  font-family: var(--f-mono);
+}
+.tiny {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+.label {
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.sub {
+  font-family: var(--f-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-2);
+}
+.selectable {
+  user-select: all;
+}
+
+/* dotted ornament rule */
+.orn {
+  height: 9px;
+  position: relative;
+}
+.orn::before,
+.orn::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  height: 2px;
+}
+.orn::before {
+  top: 0;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 6px, var(--ink) 6px 10px, transparent 10px 18px);
+  opacity: 0.55;
+}
+.orn::after {
+  top: 5px;
+  background: repeating-linear-gradient(90deg, transparent 0 7px, var(--ink) 7px 11px, transparent 11px 18px);
+  opacity: 0.35;
+}
+
+/* buttons */
+.btn {
+  display: inline-block;
+  font: 500 0.78rem/1 var(--f-ui);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--ink);
+  color: var(--hi);
+  border: 0;
+  padding: 10px 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--shadow);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: -1px;
+  box-shadow: none;
+}
+.btn:active:not(:disabled) {
+  translate: 2px 2px;
+  box-shadow: 1px 1px 0 var(--shadow);
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.btn.inv-btn {
+  background: var(--hi);
+  color: var(--ink);
+  box-shadow: none;
+}
+
+/* reduced motion: also applies when Effects is switched off in System */
+:root[data-motion='reduced'] *,
+:root[data-motion='reduced'] *::before,
+:root[data-motion='reduced'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  transition-delay: 0s !important;
+}

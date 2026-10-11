@@ -1,0 +1,30 @@
+/* Palette and type. Sand is the default; "hack" is the dark theme from System → Hacking mode. */
+:root,
+:root[data-theme='sand'] {
+  color-scheme: light;
+  --ground: #bfb99f; /* page behind the frame */
+  --bg: #d2cdb6;
+  --panel: #c6c1a9;
+  --line: #bab49b;
+  --ink: #4b4840;
+  --ink-2: #6a665a;
+  --hi: #dedac6; /* text on ink */
+  --accent: #b24a3b; /* alerts and project nodes only */
+  --shadow: rgba(75, 72, 64, 0.28);
+
+  --f-ui: 'M PLUS 1p', 'Hiragino Sans', 'Segoe UI', system-ui, sans-serif;
+  --f-mono: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+:root[data-theme='hack'] {
+  color-scheme: dark;
+  --ground: #121110;
+  --bg: #1d1c19;
+  --panel: #2c2a26;
+  --line: #4a4740;
+  --ink: #d9d4bd;
+  --ink-2: #a39e88;
+  --hi: #1d1c19;
+  --accent: #e0614f;
+  --shadow: rgba(0, 0, 0, 0.45);
+}
