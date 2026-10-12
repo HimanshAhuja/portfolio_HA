@@ -21,6 +21,10 @@ npm run build    # type-check + production build into dist/
 | Skill-map layout | `src/content/map.ts` |
 | Colours and fonts | `src/styles/tokens.css` |
 
+## Cursor
+
+The NieR cursor (arrow, menu-selector arrow on clickable things) is generated in `src/fx/cursor.ts`. `src/ui/Reticle.tsx` adds the HUD brackets that lock onto buttons. Visitors can switch it off under System → NieR cursor. It is disabled automatically on touch screens and when the system asks for reduced motion.
+
 ## Music
 
 With no track configured, a generated ambient placeholder plays. To use a real track, put the file in `public/audio/` and create `.env.local`:

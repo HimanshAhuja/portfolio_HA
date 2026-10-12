@@ -1,12 +1,15 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { blip } from './sound'
 import { music } from './music'
+import { cursorVars } from './cursor'
 
 interface Prefs {
   music: boolean
   sfx: boolean
   effects: boolean
   hack: boolean
+  /** NieR-style cursor and targeting reticle. */
+  cursor: boolean
 }
 
 interface SettingsValue extends Prefs {
@@ -17,12 +20,13 @@ interface SettingsValue extends Prefs {
   setSfx(on: boolean): void
   setEffects(on: boolean): void
   setHack(on: boolean): void
+  setCursor(on: boolean): void
   /** Play a UI blip when sound effects are enabled. */
   ping(freq?: number, dur?: number): void
 }
 
 const KEY = 'unit-ha:prefs'
-const defaults: Prefs = { music: true, sfx: false, effects: true, hack: false }
+const defaults: Prefs = { music: true, sfx: false, effects: true, hack: false, cursor: true }
 
 function load(): Prefs {
   try {
@@ -65,6 +69,19 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     document.documentElement.dataset.motion = reducedMotion || !prefs.effects ? 'reduced' : 'full'
   }, [reducedMotion, prefs.effects])
 
+  // Custom cursor images are set as CSS variables; removing them falls back to the system cursor.
+  useEffect(() => {
+    const root = document.documentElement
+    if (!prefs.cursor) {
+      root.style.removeProperty('--cursor-default')
+      root.style.removeProperty('--cursor-pointer')
+      return
+    }
+    const c = cursorVars(prefs.hack ? 'hack' : 'sand')
+    root.style.setProperty('--cursor-default', c.default)
+    root.style.setProperty('--cursor-pointer', c.pointer)
+  }, [prefs.cursor, prefs.hack])
+
   const patch = useCallback((p: Partial<Prefs>) => setPrefs(prev => ({ ...prev, ...p })), [])
 
   const value = useMemo<SettingsValue>(
@@ -81,6 +98,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setSfx: on => patch({ sfx: on }),
       setEffects: on => patch({ effects: on }),
       setHack: on => patch({ hack: on }),
+      setCursor: on => patch({ cursor: on }),
       ping(freq, dur) {
         if (prefs.sfx) blip(freq, dur)
       },

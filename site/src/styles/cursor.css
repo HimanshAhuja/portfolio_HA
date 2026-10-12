@@ -1,0 +1,66 @@
+/* NieR cursor. The images come from --cursor-default / --cursor-pointer, set in fx/settings.tsx.
+   When the preference is off they are unset and every rule falls back to the system cursor. */
+html,
+body {
+  cursor: var(--cursor-default, auto);
+}
+a:any-link,
+button:not(:disabled),
+[role='link'],
+[role='button'],
+summary {
+  cursor: var(--cursor-pointer, pointer);
+}
+button:disabled {
+  cursor: var(--cursor-default, default);
+}
+
+/* targeting reticle */
+.reticle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  rotate: 45deg;
+  transition: opacity 0.2s, rotate 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform, width, height;
+  /* a hard sand outline keeps the brackets readable over dark panels */
+  filter: drop-shadow(1px 1px 0 var(--bg)) drop-shadow(-1px -1px 0 var(--bg));
+}
+.reticle.show {
+  opacity: 0.8;
+}
+.reticle.locked {
+  opacity: 1;
+  rotate: 0deg;
+}
+.reticle i {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 0 solid var(--ink);
+}
+.reticle i:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-width: 1.5px 0 0 1.5px;
+}
+.reticle i:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-width: 1.5px 1.5px 0 0;
+}
+.reticle i:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1.5px 1.5px;
+}
+.reticle i:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1.5px 1.5px 0;
+}

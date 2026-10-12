@@ -179,7 +179,7 @@
   background: color-mix(in srgb, var(--panel) 80%, transparent);
   border: 0;
   padding: 9px 11px;
-  cursor: pointer;
+  cursor: var(--cursor-pointer, pointer);
   text-align: left;
 }
 .chip:hover {

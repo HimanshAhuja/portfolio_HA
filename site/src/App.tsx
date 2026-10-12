@@ -7,11 +7,13 @@ import { Quests } from './screens/Quests'
 import { Status } from './screens/Status'
 import { System } from './screens/System'
 import { Weapons } from './screens/Weapons'
+import { Reticle } from './ui/Reticle'
 import { Shell } from './ui/Shell'
 
 export default function App() {
   return (
     <SettingsProvider>
+      <Reticle />
       <BrowserRouter>
         <Routes>
           <Route element={<Shell />}>

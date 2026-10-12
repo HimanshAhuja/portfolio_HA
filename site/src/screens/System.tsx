@@ -21,6 +21,7 @@ export function System() {
         <Toggle label="Music" on={s.playing} onChange={s.setMusic} />
         <Toggle label="Menu sounds" on={s.sfx} onChange={s.setSfx} />
         <Toggle label="Effects" on={s.effects} onChange={s.setEffects} />
+        <Toggle label="NieR cursor" on={s.cursor} onChange={s.setCursor} />
         <Toggle label="Hacking mode" on={s.hack} onChange={s.setHack} />
       </div>
       <div className="rows">

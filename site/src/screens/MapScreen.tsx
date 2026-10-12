@@ -48,7 +48,6 @@ export function MapScreen() {
                 onBlur={() => setHot(null)}
                 onClick={open}
                 onKeyDown={e => e.key === 'Enter' && open()}
-                style={{ cursor: weaponId ? 'pointer' : 'default' }}
               >
                 <circle className={n.kind} cx={n.x} cy={n.y} r={n.kind === 'project' ? 8 : 4.5} />
                 <text x={n.x} y={n.y + (n.kind === 'project' ? 23 : 17)} textAnchor="middle">

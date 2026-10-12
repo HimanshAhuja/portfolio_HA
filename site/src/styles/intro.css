@@ -10,7 +10,7 @@
   display: grid;
   place-items: center;
   background: var(--bg);
-  cursor: pointer;
+  cursor: var(--cursor-pointer, pointer);
   outline: none;
   transition: background 0.7s 0.35s;
 }

@@ -79,7 +79,7 @@
   background: color-mix(in srgb, var(--panel) 85%, transparent);
   border: 0;
   padding: 8px 11px;
-  cursor: pointer;
+  cursor: var(--cursor-pointer, pointer);
 }
 .bgm:hover {
   background: color-mix(in srgb, var(--ink) 15%, var(--panel));
@@ -156,7 +156,7 @@
 .bubble-text {
   all: unset;
   display: block;
-  cursor: pointer;
+  cursor: var(--cursor-pointer, pointer);
   padding: 8px 10px;
   box-sizing: border-box;
 }
@@ -171,7 +171,7 @@
 }
 .bubble-x {
   all: unset;
-  cursor: pointer;
+  cursor: var(--cursor-pointer, pointer);
   padding: 4px 9px;
   font-size: 1.1rem;
   line-height: 1;
@@ -212,7 +212,7 @@
   background: color-mix(in srgb, var(--panel) 85%, transparent);
   border: 0;
   padding: 11px 12px;
-  cursor: pointer;
+  cursor: var(--cursor-pointer, pointer);
   text-align: left;
   transition: background 0.15s, color 0.15s, transform 0.15s;
 }
