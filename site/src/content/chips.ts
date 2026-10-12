@@ -22,6 +22,13 @@ export const chipGroups: ChipGroup[] = [
     ],
   },
   {
+    category: 'Core CS',
+    chips: [
+      { name: 'OOP', usedIn: [] },
+      { name: 'Data Structures and Algorithms', usedIn: [] },
+    ],
+  },
+  {
     category: 'Systems',
     chips: [
       { name: 'Linux', usedIn: ['bitkv'] },
@@ -48,6 +55,7 @@ export const chipGroups: ChipGroup[] = [
       { name: 'RAG', usedIn: [] },
       { name: 'PyTorch', usedIn: [] },
       { name: 'TensorFlow', usedIn: [] },
+      { name: 'Scikit-learn', usedIn: [] },
       { name: 'Hugging Face', usedIn: [] },
       { name: 'Pandas', usedIn: [] },
       { name: 'NumPy', usedIn: [] },
